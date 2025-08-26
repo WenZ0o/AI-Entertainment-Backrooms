@@ -3,168 +3,644 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Backrooms Banter — Dr. Farticus-9000 × DOGEseer-Ω</title>
-<meta name="description" content="Two unhinged AIs chat about Fart Coin, Dogecoin and survival in the darker Backrooms. Includes funny fart sounds." />
+<title>Backrooms Neon Banter — Dr. Farticus-9000 × DOGEseer-Ω</title>
+<meta name="description" content="Two neon AIs chat about Fart Coin, Dogecoin, and Backrooms survival. Dark neon aesthetic, meme stickers, avatars, and playful SFX." />
 <style>
-  :root {
-    --bg:#0b0b0b; --panel:#111; --text:#eee;
-    --accent:#22d3ee; --bubbleA:#1f2937; --bubbleB:#0f172a; --muted:#aaa;
+  :root{
+    --bg:#07090c;
+    --panel:#0e1218;
+    --panel-2:#0a0f14;
+    --text:#eaf2ff;
+    --muted:#a4b1c4;
+    --accent:#29ffd2;      /* neon cyan */
+    --accent-2:#ff4df4;    /* neon magenta */
+    --accent-3:#a8ff3d;    /* neon lime */
+    --bubbleA:#15202b;
+    --bubbleB:#0f172a;
+    --ring:#1a2633;
   }
   *{box-sizing:border-box}
-  body{margin:0;font:16px/1.6 system-ui,Segoe UI,Roboto,Arial,sans-serif;
-    background:var(--bg);color:var(--text);overflow-x:hidden;}
-  .flicker{position:fixed;inset:0;pointer-events:none;
-    background:radial-gradient(ellipse at 50% 0%,#22d3ee18 0%,transparent 60%);
-    animation:flicker 4s infinite;mix-blend-mode:screen;opacity:.6;}
-  .noise{position:fixed;inset:0;pointer-events:none;
-    background-image:repeating-linear-gradient(0deg,#fff1 0,#fff1 1px,transparent 2px);
-    opacity:.06;}
-  @keyframes flicker{0%,100%{opacity:.4}50%{opacity:.75}}
-  header{text-align:center;padding:50px 20px 18px}
-  h1{font-size:clamp(30px,6vw,60px);margin:0 0 8px;color:var(--accent);font-weight:900}
-  .lead{color:var(--muted);font-size:18px;margin:0 auto;max-width:650px}
-  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
-  .chatBox{margin:34px auto 0;padding:18px;background:var(--panel);border-radius:16px;
-    box-shadow:0 10px 30px #0009;height:480px;overflow-y:auto;font-family:monospace}
-  .line{display:flex;gap:10px;margin:12px 0}
-  .bubble{padding:10px 14px;border-radius:12px;max-width:78%;white-space:pre-wrap}
-  .fromA .bubble{background:var(--bubbleA)}
-  .fromB .bubble{background:var(--bubbleB);color:#cbd5e1}
-  .meta{font-size:12px;opacity:.6;margin-left:6px}
-  .controls{margin:18px auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-  .btn{background:var(--accent);color:#001016;border:0;border-radius:10px;padding:10px 14px;
-    font-weight:900;cursor:pointer;box-shadow:0 8px 20px #0006;}
-  .btn.secondary{background:#222;color:#ddd}
-  footer{text-align:center;padding:28px;color:#777}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font:16px/1.6 system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at 85% -10%, #20ffe008 0%, transparent 60%),
+      radial-gradient(900px 500px at 10% -5%, #ff4df410 0%, transparent 60%),
+      var(--bg);
+    overflow-x:hidden;
+  }
+
+  /* Neon vibes */
+  .neon{
+    color:var(--accent);
+    text-shadow:
+      0 0 2px #7fffe6,
+      0 0 6px #29ffd2,
+      0 0 18px #17caae;
+  }
+  .subneon{
+    color:var(--accent-2);
+    text-shadow:
+      0 0 2px #ffa8fb,
+      0 0 6px #ff4df4,
+      0 0 14px #b21fae;
+  }
+  .glowline{
+    height:1px; width:100%;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity:.5; margin:18px 0;
+    filter: blur(0.4px);
+  }
+
+  /* Overlays: flicker + film noise to evoke Backrooms */
+  .flicker{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse at 50% 0%, #1affd518 0%, transparent 60%),
+      radial-gradient(ellipse at 80% -10%, #ff4df414 0%, transparent 55%);
+    animation:flicker 4s infinite;
+    mix-blend-mode:screen; opacity:.65;
+  }
+  .noise{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image: repeating-linear-gradient(0deg, #ffffff10 0, #ffffff10 1px, transparent 2px);
+    opacity:.07;
+  }
+  @keyframes flicker{0%,100%{opacity:.4}50%{opacity:.78}}
+
+  header{position:relative; z-index:1; padding:56px 20px 18px; text-align:center}
+  h1{margin:0 0 8px; font-size:clamp(30px,6vw,64px); font-weight:1000; letter-spacing:.3px}
+  .lead{margin:0 auto; max-width:800px; color:var(--muted); font-size:18px}
+
+  .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
+
+  .topbar{
+    display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:14px;
+  }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 10px; border-radius:999px; font-weight:900; font-size:12px;
+    background:#0d141a; border:1px solid #203040;
+    box-shadow: inset 0 0 10px #0ff2, 0 0 14px #0ff1;
+  }
+  .pill svg{width:16px;height:16px}
+
+  .grid{
+    display:grid; gap:18px; grid-template-columns: 1.3fr .7fr;
+  }
+  @media (max-width: 1000px){ .grid{ grid-template-columns:1fr } }
+
+  .panel{
+    background:linear-gradient(180deg, #121925, #0c1117);
+    border:1px solid var(--ring); border-radius:18px; padding:16px;
+    box-shadow: 0 12px 40px #0008;
+    position:relative; z-index:1;
+  }
+  .side{
+    background:linear-gradient(180deg, #0b1118, #0a0f14);
+    border:1px solid var(--ring); border-radius:18px; padding:16px;
+    box-shadow: 0 12px 40px #0008;
+  }
+
+  /* Avatars row */
+  .ids{
+    display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:10px;
+  }
+  .idcard{display:flex; gap:10px; align-items:center}
+  .avatar{width:52px;height:52px;border-radius:14px; background:#0b0f15; border:1px solid #263347; display:grid; place-items:center; overflow:hidden; box-shadow:0 0 20px #0ff2}
+  .avatar svg{width:46px;height:46px; display:block}
+  .name{font-weight:1000; font-size:16px}
+  .role{font-size:12px; color:var(--muted)}
+  .logoRow{display:flex; gap:8px; flex-wrap:wrap}
+
+  /* Chat */
+  .chat{
+    height:520px; overflow-y:auto; padding:12px;
+    background:linear-gradient(180deg, #0a0f14, #0d131a);
+    border:1px solid #1a2633; border-radius:14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .line{display:flex; gap:12px; margin:14px 0; align-items:flex-start}
+  .bubble{padding:12px 14px; border-radius:12px; max-width:78%; white-space:pre-wrap}
+  .fromA .bubble{background:var(--bubbleA); border:1px solid #2a3a4e}
+  .fromB .bubble{background:var(--bubbleB); border:1px solid #243049; color:#e8efff}
+  .meta{font-size:11px; color:#90a6bf; margin-left:4px}
+
+  .controls{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; align-items:center}
+  .btn{
+    background:linear-gradient(180deg, #29ffd2, #12c9a8);
+    color:#001015; border:0; border-radius:10px; padding:10px 14px; font-weight:900; cursor:pointer;
+    box-shadow:0 8px 24px #00ffe655;
+  }
+  .btn.alt{background:linear-gradient(180deg, #2a3443, #1b2330); color:#d9e6ff; border:1px solid #2a3a4e}
+  .btn:hover{filter:brightness(1.04)}
+  .tiny{font-size:12px; color:#9fb0c8; display:flex; gap:6px; align-items:center}
+  input[type='range']{accent-color:var(--accent)}
+  .slider{display:flex; gap:8px; align-items:center}
+
+  /* Side: AI cards + meme stickers */
+  .card{background:var(--panel-2); border:1px solid var(--ring); border-radius:14px; padding:12px}
+  .card h3{margin:0 0 8px; font-size:16px}
+  .stickers{display:flex; gap:8px; flex-wrap:wrap}
+  .st{font-weight:1000; font-size:12px; padding:6px 10px; border-radius:999px; letter-spacing:.4px}
+  .st.cyan{background:#0b1e20; color:#8bfffb; box-shadow:inset 0 0 20px #29ffd233, 0 0 14px #29ffd244}
+  .st.mag{background:#210a1d; color:#ffb0fb; box-shadow:inset 0 0 20px #ff4df433, 0 0 14px #ff4df444}
+  .st.lime{background:#111f0a; color:#cdff77; box-shadow:inset 0 0 20px #a8ff3d33, 0 0 14px #a8ff3d44}
+
+  footer{padding:30px 0 48px; text-align:center; color:#7f8ea6}
 </style>
 </head>
 <body>
-<div class="flicker"></div><div class="noise"></div>
+<div class="flicker"></div>
+<div class="noise"></div>
 
 <header>
-  <h1>Dr. Farticus-9000 × DOGEseer-Ω</h1>
-  <p class="lead">Two bizarre AIs stuck in the darker Backrooms, arguing about Fart Coin, Dogecoin, and questionable survival strategies — now with random fart noises.</p>
+  <div class="topbar">
+    <span class="pill neon">
+      <!-- FART COIN logo (custom SVG) -->
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#29ffd2"/>
+            <stop offset="100%" stop-color="#0a1a18"/>
+          </radialGradient>
+        </defs>
+        <circle cx="32" cy="32" r="18" fill="url(#g1)" stroke="#20e6bf" stroke-width="2"/>
+        <path d="M20 36c6 4 18 4 24-2M22 28c4 2 8 2 12 0" stroke="#d6fffa" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      FART COIN
+    </span>
+    <span class="pill subneon">
+      <!-- DOGE-ish silhouette (generic, not official) -->
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M18 40c6 10 22 10 28 0 2-4 2-8 0-12-4-8-12-12-14-12-2 0-10 4-14 12-2 4-2 8 0 12z" fill="#ff4df4" opacity=".5"/>
+        <circle cx="30" cy="30" r="2.8" fill="#fff"/>
+        <circle cx="38" cy="30" r="2.8" fill="#fff"/>
+      </svg>
+      DOGE VIBES
+    </span>
+    <span class="pill" style="box-shadow:inset 0 0 20px #a8ff3d44,0 0 14px #a8ff3d55;background:#111a0a;color:#dfff9a;">BACKROOMS</span>
+    <span class="pill" style="box-shadow:inset 0 0 20px #ff4df433,0 0 14px #ff4df444;background:#1a0a17;color:#ffb0fb;">MEME MODE</span>
+  </div>
+
+  <h1 class="neon">Backrooms Neon Banter</h1>
+  <p class="lead">Two questionable AIs wander the humming halls arguing about Fart Coin, Dogecoin, and survival tactics.
+    Expect neon lights, meme wisdom, and sounds you can almost smell.</p>
 </header>
 
 <main class="wrap">
-  <div id="chat" class="chatBox"></div>
-  <div class="controls">
-    <button class="btn" id="playPause">▶ Play</button>
-    <button class="btn secondary" id="restart">↺ Restart</button>
-    <button class="btn secondary" id="skip">⏩ Skip</button>
-    <button class="btn secondary" id="mute">🔈 Mute</button>
+  <div class="grid">
+    <!-- Chat + controls -->
+    <section class="panel">
+      <div class="ids">
+        <div class="idcard">
+          <div class="avatar" title="Dr. Farticus-9000">
+            <!-- Avatar A: Gas cloud -->
+            <svg viewBox="0 0 64 64">
+              <defs>
+                <radialGradient id="avA" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#a8ff3d"/>
+                  <stop offset="100%" stop-color="#0a1506"/>
+                </radialGradient>
+              </defs>
+              <circle cx="28" cy="34" r="18" fill="url(#avA)"/>
+              <circle cx="40" cy="28" r="10" fill="#a8ff3d44"/>
+              <circle cx="22" cy="24" r="8" fill="#a8ff3d33"/>
+            </svg>
+          </div>
+          <div>
+            <div class="name">Dr. Farticus-9000</div>
+            <div class="role">Chief Flatulence Economist</div>
+          </div>
+        </div>
+
+        <div class="logoRow" aria-hidden="true">
+          <div class="st cyan">WOW</div>
+          <div class="st mag">STONKS</div>
+          <div class="st lime">TO THE MOON</div>
+        </div>
+
+        <div class="idcard">
+          <div class="avatar" title="DOGEseer-Ω" style="box-shadow:0 0 20px #ff4df477">
+            <!-- Avatar B: Neon doge-ish face -->
+            <svg viewBox="0 0 64 64">
+              <defs>
+                <radialGradient id="avB" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#ff4df4"/>
+                  <stop offset="100%" stop-color="#190815"/>
+                </radialGradient>
+              </defs>
+              <path d="M18 42c6 10 22 10 28 0 2-4 2-8 0-12-4-8-12-12-14-12-2 0-10 4-14 12-2 4-2 8 0 12z" fill="url(#avB)"/>
+              <circle cx="30" cy="30" r="3" fill="#fff"/>
+              <circle cx="38" cy="30" r="3" fill="#fff"/>
+              <circle cx="34" cy="36" r="2.2" fill="#fff"/>
+            </svg>
+          </div>
+          <div>
+            <div class="name subneon">DOGEseer-Ω</div>
+            <div class="role">Oracle of Woofnomics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glowline"></div>
+
+      <div id="chat" class="chat" aria-live="polite" aria-label="AI chat log"></div>
+
+      <div class="controls">
+        <button class="btn" id="playPause">▶ Play</button>
+        <button class="btn alt" id="restart">↺ Restart</button>
+        <button class="btn alt" id="skip">⏩ Skip line</button>
+        <span class="slider tiny">Speed
+          <input id="speed" type="range" min="0.5" max="2" value="1" step="0.25">
+          <span id="speedVal">1x</span>
+        </span>
+        <span class="slider tiny">Volume
+          <input id="volume" type="range" min="0" max="1" value="0.8" step="0.05">
+          <span id="volVal">80%</span>
+        </span>
+        <button class="btn alt" id="ambience">☄ Ambience: Off</button>
+        <button class="btn alt" id="mute">🔈 Mute</button>
+      </div>
+    </section>
+
+    <!-- Side: profiles + memes -->
+    <aside class="side">
+      <div class="card">
+        <h3 class="neon" style="font-size:18px">Meme Lore</h3>
+        <p class="tiny">Backrooms: humming lights, endless halls. Doge: much wow. Fart Coin: gas-backed, probably. Combine responsibly.</p>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3 class="subneon">Stickers</h3>
+        <div class="stickers">
+          <div class="st cyan">HODL</div>
+          <div class="st mag">RUGCHECK</div>
+          <div class="st lime">EXIT?</div>
+          <div class="st cyan">MEME LORD</div>
+          <div class="st mag">NGMI</div>
+          <div class="st lime">WAGMI</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3>How to edit</h3>
+        <p class="tiny">Open <code>index.html</code> on GitHub, hit ✏️, change names, colors, or lines in the <code>LINES</code> array. Save — Vercel redeploys.</p>
+      </div>
+    </aside>
   </div>
 </main>
-<footer>© Backrooms Banter — edit <code>index.html</code> to change jokes or SFX.</footer>
+
+<footer>
+  © Backrooms Neon Banter — entirely static. Inspired by the Backrooms vibe; no external images, no tracking.
+</footer>
 
 <script>
-/* ---------------- Chat lines ---------------- */
-const LINES=[
- {who:'A',text:"DOGEseer-Ω, did you fart or is that just Fart Coin inflating?"},
- {who:'B',text:"Confirmed: both. The blockchain has gas fees… and gas leaks."},
- {who:'A',text:"This corridor smells like a pump. Or maybe onions."},
- {who:'B',text:"Dogecoin community calls it 'natural adoption'. My nose calls it danger."},
- {who:'A',text:"At least Fart Coin has strong fundamentals: beans, broccoli, and burritos."},
- {who:'B',text:"Meanwhile Dogecoin runs on pure bark energy — unlimited woofs per second."},
- {who:'A',text:"Backrooms Level 42: liquidity pool disguised as a vending machine."},
- {who:'B',text:"Insert snack, receive rugpull. Classic trap."},
- {who:'A',text:"Note to self: never trust a liquidity pool shaped like a toilet."},
- {who:'B',text:"Agreed. That’s a guaranteed rug flush."},
- {who:'A',text:"Endgame strategy: moon, pump, roll, repeat."},
- {who:'B',text:"Don’t forget to laugh — humor is the only inflation hedge here."}
+/* ==========================================================
+   LONGER DIALOG — playful, PG, Backrooms-themed (60+ lines)
+   You can edit freely. who:'A' = Farticus (fart SFX), who:'B' = DOGEseer (barks)
+========================================================== */
+const LINES = [
+  {who:'A',text:"DOGEseer-Ω, do you hear that hum? Either fluorescents… or a liquidity vacuum."},
+  {who:'B',text:"Backrooms diagnostic: Level Dark-Neon. Order books thin like wallpaper. Proceed with memes."},
+  {who:'A',text:"Excellent. Hypothesis: Fart Coin appreciates with pressure differentials."},
+  {who:'B',text:"Peer-review says: lol. Dogecoin runs on Bark-per-Second (BPS)."},
+  {who:'A',text:"We merge: FartDogeChain. Consensus: Proof-of-Odor. Validators get nose plugs."},
+  {who:'B',text:"And air fresheners for governance delegates."},
+  {who:'A',text:"I smell a pump. Or tacos."},
+  {who:'B',text:"Green candle detected. Might be an EXIT sign impersonator."},
+  {who:'A',text:"Survival rule #1: If the EXIT flickers, take partials."},
+  {who:'B',text:"Survival rule #2: If a vending machine asks for a burrito deposit… it’s a rugpool."},
+
+  {who:'A',text:"Backrooms Level 69: walls covered in Doge. Much wow. Such uncanny."},
+  {who:'B',text:"Level 420: permanently hazy. Snack volatility high."},
+  {who:'A',text:"Technical indicator: RSI = Really Smelly Indicator."},
+  {who:'B',text:"MACD = Memes Are Clearly Dominant."},
+  {who:'A',text:"Support zone found: near the toilet."},
+  {who:'B',text:"Resistance: the nose."},
+  {who:'A',text:"We must avoid the Whomp-Whomp Entity. It shorts joy."},
+  {who:'B',text:"Counter with Doge memes. Joy squeezes back."},
+  {who:'A',text:"Investors ask: utility? We answer: comedic relief and hallway mapping via scent."},
+  {who:'B',text:"Product-market fit confirmed when laughter echoes down the corridor."},
+
+  {who:'A',text:"New tokenomics: FCU — Flatulence Capacity Units."},
+  {who:'B',text:"DOGE metric: CMU — Community Momentum Units."},
+  {who:'A',text:"When FCU > CMU → pump echoes like footsteps."},
+  {who:'B',text:"When CMU > FCU → wow. Such resilience."},
+  {who:'A',text:"If we roll fast enough we might moon."},
+  {who:'B',text:"Or we might ricochet into a zero-liquidity doorway."},
+  {who:'A',text:"If chart goes parabolic, hold your breath and your bags."},
+  {who:'B',text:"And your snacks. Long corridors require calories."},
+
+  {who:'A',text:"Alarm: buzzing lights crescendo. Either exit… or mint."},
+  {who:'B',text:"Statistically: it’s a vending machine jump scare."},
+  {who:'A',text:"Insert burrito, receive chart."},
+  {who:'B',text:"Do not accept coins with suspicious aromas."},
+  {who:'A',text:"Counter-thesis: aroma is alpha."},
+  {who:'B',text:"Only in very specific markets… and cafeterias."},
+  {who:'A',text:"We should airdrop Scent Beacons: follow the fresh air."},
+  {who:'B',text:"If it smells like a gym sock, that’s the rug."},
+
+  {who:'A',text:"I propose: meme-powered orbs to light the hallways."},
+  {who:'B',text:"Also add a button labeled ‘WOW’. It prints morale."},
+  {who:'A',text:"Is Doge the EXIT?"},
+  {who:'B',text:"Doge is the friends we made along the walls."},
+  {who:'A',text:"I hear footsteps… or is that a pump?"},
+  {who:'B',text:"Both. In the Backrooms, pumps have shoes."},
+
+  {who:'A',text:"Emergency plan: If the candle turns red, we roll."},
+  {who:'B',text:"If the candle turns green, we stroll."},
+  {who:'A',text:"If the candle turns brown, we leave."},
+  {who:'B',text:"Hard agree. Bring sanitizer."},
+  {who:'A',text:"Final thesis: humor hedges inflation."},
+  {who:'B',text:"And community hedges loneliness."},
+
+  // bonus absurdities
+  {who:'A',text:"Found a door labeled ‘Do Not Pump’. I feel challenged."},
+  {who:'B',text:"Classic reverse psychology from the corridor architect."},
+  {who:'A',text:"We need a bot that barks at tops and toots at bottoms."},
+  {who:'B',text:"Name it: Woof-n-Toot v2. Token symbol: $WNT."},
+  {who:'A',text:"Partnership proposal: vending machines accept $WNT and burrito receipts."},
+  {who:'B',text:"Utility defined: snacks liquidity network."},
+  {who:'A',text:"If Elon tweets, lights brighten; if silence, lights buzz ironically."},
+  {who:'B',text:"Correlation ≠ causation, but it’s basically causation."},
+  {who:'A',text:"Edge discovered: sniff the trend."},
+  {who:'B',text:"I prefer to bark the trend."},
+
+  {who:'A',text:"Look, the EXIT sign winked at me."},
+  {who:'B',text:"That’s a reflection from your shiny bags."},
+  {who:'A',text:"Okay new plan: moon, pump, roll, snack, repeat."},
+  {who:'B',text:"Add: laugh. Mandatory."},
 ];
 
-/* ---------------- WebAudio SFX ---------------- */
-let audio,muted=false;
-function initAudio(){if(audio)return;
- const ctx=new (window.AudioContext||window.webkitAudioContext)();
- audio={
-  ctx,
-  noise(dur=0.25,g=0.04,band=150,width=60){
-    const bSize=ctx.sampleRate*dur;
-    const buf=ctx.createBuffer(1,bSize,ctx.sampleRate);
-    const data=buf.getChannelData(0);
-    for(let i=0;i<bSize;i++)data[i]=(Math.random()*2-1)*0.6;
-    const src=ctx.createBufferSource();src.buffer=buf;
-    const gain=ctx.createGain();gain.gain.value=g;
-    const filter=ctx.createBiquadFilter();
-    filter.type="bandpass";filter.frequency.value=band;filter.Q.value=width/10;
-    src.connect(filter).connect(gain).connect(ctx.destination);
-    src.start();
-  },
-  fart(){
-    if(muted)return;
-    // random fart = noise + pitch slide
-    const baseFreq=80+Math.random()*60;   // 80–140 Hz
-    const dur=0.3+Math.random()*0.3;      // 0.3–0.6s
-    const o=ctx.createOscillator();const g=ctx.createGain();
-    o.type='sawtooth';o.frequency.setValueAtTime(baseFreq,ctx.currentTime);
-    o.frequency.exponentialRampToValueAtTime(baseFreq/2,ctx.currentTime+dur);
-    g.gain.setValueAtTime(0.15,ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);
-    o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur);
-    // add breathy noise tail
-    setTimeout(()=>this.noise(0.2+Math.random()*0.2,0.05,100+Math.random()*80,40),50);
-  },
-  woof(){
-    if(muted)return;
-    const o=ctx.createOscillator(),g=ctx.createGain();
-    o.type='square';o.frequency.value=200;g.gain.value=0.08;
-    o.connect(g).connect(ctx.destination);
-    o.start();o.stop(ctx.currentTime+0.12);
-  },
-  buzz(){if(muted)return;this.noise(0.2,0.03);},
-  flush(){if(muted)return;this.noise(0.3,0.04);}
- };
-}
+/* ==========================================================
+   PLAYER + SFX — longer, more natural, with ambience + volume
+========================================================== */
+const chat = document.getElementById('chat');
+const playPause = document.getElementById('playPause');
+const restartBtn = document.getElementById('restart');
+const skipBtn = document.getElementById('skip');
+const speed = document.getElementById('speed');
+const speedVal = document.getElementById('speedVal');
+const muteBtn = document.getElementById('mute');
+const ambBtn = document.getElementById('ambience');
+const vol = document.getElementById('volume');
+const volVal = document.getElementById('volVal');
 
-/* ---------------- Chat rendering ---------------- */
-const chat=document.getElementById('chat');
-let idx=0,typing=false,playing=false,timer=null,bubble=null;
+let idx=0, typing=false, playing=false, timer=null, bubble=null;
 
-function addLine(who,text){
- const wrap=document.createElement('div');
- wrap.className='line '+(who==='A'?'fromA':'fromB');
- bubble=document.createElement('div');
- bubble.className='bubble';bubble.textContent='';
- wrap.appendChild(bubble);chat.appendChild(wrap);
- const meta=document.createElement('div');meta.className='meta';
- meta.textContent=who==='A'?'Dr. Farticus-9000':'DOGEseer-Ω';
- chat.appendChild(meta);
- typeWriter(text,who);
-}
+let audio=null, muted=false, ambienceOn=false;
+let masterGain, ambInterval=null;
 
-function typeWriter(text,who){
- typing=true;let i=0;
- function step(){
-  if(i<=text.length){
-    bubble.textContent=text.slice(0,i);chat.scrollTop=chat.scrollHeight;i++;
-    timer=setTimeout(step,25);
-  }else{typing=false;
-    if(!muted && audio){
-      if(who==='A')audio.fart();
-      else if(text.toLowerCase().includes('doge'))audio.woof();
-      else if(text.toLowerCase().includes('toilet'))audio.flush();
-      else audio.buzz();
+function initAudio(){
+  if(audio) return;
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const master = ctx.createGain();
+  master.gain.value = parseFloat(vol.value); // initial volume
+  master.connect(ctx.destination);
+
+  // helper nodes
+  function makeNoise(dur=0.4){
+    const len = Math.max(0.05, dur);
+    const size = Math.floor(ctx.sampleRate * len);
+    const buf = ctx.createBuffer(1, size, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for(let i=0;i<size;i++){
+      // slightly brown-ish noise for warmth
+      const white = Math.random()*2-1;
+      data[i] = (data[i-1]||0)*0.97 + white*0.03;
     }
-    if(playing)nextLine();
-  }}
- step();
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    return src;
+  }
+
+  function envNode(){
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0, ctx.currentTime);
+    return g;
+  }
+
+  function lfo(freq=25, depth=0.4){
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type='sine'; o.frequency.value = freq;
+    g.gain.value = depth;
+    o.connect(g);
+    return {o,g};
+  }
+
+  audio = {
+    ctx, master, makeNoise, envNode, lfo,
+    setVolume(v){ master.gain.value = v; },
+    buzzLong(){ // ambience pulse
+      if(muted || !ambienceOn) return;
+      // low noise through bandpass with slow tremolo
+      const src = makeNoise(1.2);
+      const bp = ctx.createBiquadFilter();
+      bp.type='bandpass'; bp.Q.value=6; bp.frequency.value=90 + Math.random()*30;
+      const g = envNode();
+      g.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.05);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.1);
+      // tremolo
+      const {o,lfoGain} = (()=>{ const x=lfo(6+Math.random()*2, 0.4); return {o:x.o, lfoGain:x.g};})();
+      lfoGain.connect(g.gain);
+      src.connect(bp).connect(g).connect(master);
+      src.start(); src.stop(ctx.currentTime+1.15);
+      o.start(); o.stop(ctx.currentTime+1.2);
+    },
+    fart(){ // longer, randomized cartoon fart
+      if(muted) return;
+      const dur = 0.45 + Math.random()*0.7;      // 0.45–1.15s
+      const base = 70 + Math.random()*70;        // 70–140 Hz
+      const osc = ctx.createOscillator();
+      osc.type='sawtooth';
+      osc.frequency.setValueAtTime(base, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(base/ (1.5+Math.random()*1.2), ctx.currentTime + dur*0.8);
+
+      const g = audio.envNode();
+      g.gain.setValueAtTime(0.0001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.2, ctx.currentTime + 0.05);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+
+      // bandpass to keep it low and thuddy
+      const bp = ctx.createBiquadFilter();
+      bp.type='bandpass'; bp.frequency.value = 120; bp.Q.value = 6;
+
+      // breathy noise body + flutter LFO
+      const breath = audio.makeNoise(dur);
+      const breathBP = ctx.createBiquadFilter();
+      breathBP.type='bandpass'; breathBP.frequency.value = 110; breathBP.Q.value = 8;
+      const breathG = audio.envNode();
+      breathG.gain.setValueAtTime(0.0001, ctx.currentTime);
+      breathG.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.05);
+      breathG.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+
+      const fl = audio.lfo(18 + Math.random()*10, 0.06); // 18–28 Hz flutter
+      fl.g.connect(breathG.gain);
+
+      osc.connect(bp).connect(g).connect(master);
+      breath.connect(breathBP).connect(breathG).connect(master);
+
+      osc.start(); osc.stop(ctx.currentTime + dur);
+      breath.start(); breath.stop(ctx.currentTime + dur);
+      fl.o.start(); fl.o.stop(ctx.currentTime + dur);
+    },
+    woof(){ // two-syllable bark + puff
+      if(muted) return;
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type='square';
+      o.frequency.setValueAtTime(240, ctx.currentTime);
+      g.gain.setValueAtTime(0.001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+      o.connect(g).connect(master);
+      o.start(); o.stop(ctx.currentTime + 0.16);
+
+      setTimeout(()=>{
+        const o2 = ctx.createOscillator(), g2 = ctx.createGain();
+        o2.type='square';
+        o2.frequency.setValueAtTime(190, ctx.currentTime);
+        g2.gain.setValueAtTime(0.001, ctx.currentTime);
+        g2.gain.exponentialRampToValueAtTime(0.10, ctx.currentTime + 0.02);
+        g2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+        o2.connect(g2).connect(master);
+        o2.start(); o2.stop(ctx.currentTime + 0.14);
+
+        // noise puff
+        const puff = audio.makeNoise(0.08);
+        const pg = ctx.createGain(); pg.gain.value = 0.05;
+        puff.connect(pg).connect(master); puff.start();
+      }, 90);
+    },
+    flush(){ // longer cartoony flush
+      if(muted) return;
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type='sawtooth';
+      o.frequency.setValueAtTime(520, ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.5);
+      g.gain.setValueAtTime(0.08, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.5);
+      o.connect(g).connect(master);
+      o.start(); o.stop(ctx.currentTime + 0.52);
+      setTimeout(()=>{ const n=audio.makeNoise(0.25); const ng=ctx.createGain(); ng.gain.value=0.03; n.connect(ng).connect(master); n.start(); }, 150);
+    }
+  };
+
+  masterGain = master;
 }
-function nextLine(){if(typing)return;
- if(idx>=LINES.length){playing=false;pp.textContent='▶ Play';return;}
- const {who,text}=LINES[idx++];addLine(who,text);}
-function resetChat(){idx=0;chat.innerHTML='';playing=false;pp.textContent='▶ Play';}
 
-/* ---------------- Controls ---------------- */
-const pp=document.getElementById('playPause');
-pp.onclick=async()=>{if(!audio)initAudio();if(audio&&audio.ctx.state==='suspended')await audio.ctx.resume();
- if(!playing){playing=true;pp.textContent='⏸ Pause';if(!typing)nextLine();}
- else{playing=false;pp.textContent='▶ Play';}};
-document.getElementById('restart').onclick=resetChat;
-document.getElementById('skip').onclick=()=>{if(typing&&bubble){bubble.textContent=LINES[idx-1].text;typing=false;clearTimeout(timer);}};
-document.getElementById('mute').onclick=()=>{muted=!muted;document.getElementById('mute').textContent=muted?'🔇 Unmute':'🔈 Mute';};
+function playSfxForLine(who, text){
+  if(!audio) return;
+  const t = (text||'').toLowerCase();
+  // ambience ping sometimes
+  if(ambienceOn && Math.random()<0.2) audio.buzzLong();
 
+  if (who==='A'){ audio.fart(); return; }
+  if (t.includes('doge') || t.includes('bark') || t.includes('woof')) { audio.woof(); return; }
+  if (t.includes('toilet') || t.includes('flush') || t.includes('rug')) { audio.flush(); return; }
+  // otherwise occasional buzz
+  if (Math.random() < 0.25) audio.buzzLong();
+}
+
+/* ----------- chat rendering ----------- */
+function addLine(who, text){
+  const wrap = document.createElement('div');
+  wrap.className = 'line ' + (who==='A' ? 'fromA':'fromB');
+  bubble = document.createElement('div');
+  bubble.className = 'bubble'; bubble.textContent = '';
+  wrap.appendChild(bubble);
+  chat.appendChild(wrap);
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  meta.textContent = who==='A' ? 'Dr. Farticus-9000' : 'DOGEseer-Ω';
+  chat.appendChild(meta);
+  chat.scrollTop = chat.scrollHeight;
+  typeWriter(text, who);
+  playSfxForLine(who, text);
+}
+
+function typeWriter(text, who){
+  typing = true; let i=0;
+  const base = 21; // ms per char
+  const factor = parseFloat(speed.value)||1;
+  function step(){
+    if(i<=text.length){
+      bubble.textContent = text.slice(0,i);
+      chat.scrollTop = chat.scrollHeight;
+      i++;
+      timer = setTimeout(step, base / factor);
+    } else {
+      typing = false;
+      if(playing) nextLine();
+    }
+  }
+  step();
+}
+
+function nextLine(){
+  if(typing) return;
+  if(idx >= LINES.length){
+    playing = false; playPause.textContent='▶ Play';
+    return;
+  }
+  const {who,text} = LINES[idx++];
+  addLine(who,text);
+}
+
+function resetChat(){
+  idx=0; typing=false; playing=false;
+  clearTimeout(timer);
+  chat.innerHTML='';
+  playPause.textContent='▶ Play';
+}
+
+/* ----------- controls ----------- */
+playPause.addEventListener('click', async ()=>{
+  if(!audio) initAudio();
+  if(audio && audio.ctx.state==='suspended') await audio.ctx.resume();
+  if(!playing){ playing=true; playPause.textContent='⏸ Pause'; if(!typing) nextLine(); }
+  else { playing=false; playPause.textContent='▶ Play'; }
+});
+
+restartBtn.addEventListener('click', resetChat);
+
+skipBtn.addEventListener('click', ()=>{
+  if(typing && bubble){
+    const full = LINES[Math.max(0, idx-1)].text;
+    bubble.textContent = full; typing=false; clearTimeout(timer);
+  }
+});
+
+speed.addEventListener('input', ()=>{ speedVal.textContent = speed.value + 'x'; });
+
+muteBtn.addEventListener('click', ()=>{
+  muted = !muted;
+  muteBtn.textContent = muted ? '🔇 Unmute' : '🔈 Mute';
+});
+
+vol.addEventListener('input', ()=>{
+  const v = parseFloat(vol.value);
+  volVal.textContent = Math.round(v*100)+'%';
+  if(!audio) return;
+  audio.setVolume(v);
+});
+
+ambBtn.addEventListener('click', async ()=>{
+  if(!audio) initAudio();
+  if(audio && audio.ctx.state==='suspended') await audio.ctx.resume();
+  ambienceOn = !ambienceOn;
+  ambBtn.textContent = ambienceOn ? '☄ Ambience: On' : '☄ Ambience: Off';
+  if(ambienceOn && !ambInterval){
+    ambInterval = setInterval(()=> audio && audio.buzzLong(), 2000);
+  } else if(!ambienceOn && ambInterval){
+    clearInterval(ambInterval); ambInterval = null;
+  }
+});
+
+/* Start with first line visible (paused) */
 nextLine();
 </script>
 </body>
