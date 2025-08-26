@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Backrooms Crypto Banter — Dr. Farticus-9000 × DOGEseer-Ω</title>
+<meta name="description" content="Two playful AIs chat about Fart Coin, the Backrooms, and Dogecoin. Animated typewriter chat. Fully static one-page." />
+<style>
+  :root{
+    --ink:#0b0b0b;
+    --bg:#fef9c3;
+    --yellow:#fde047;
+    --card:#ffffffcc;
+    --muted:#1118;
+    --ring:#00000022;
+  }
+  * { box-sizing:border-box }
+  html,body { height:100% }
+  body {
+    margin:0;
+    font: 16px/1.6 system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background: var(--bg);
+    overflow-x:hidden;
+  }
+
+  /* Backrooms vibe */
+  .flicker {
+    position: fixed; inset: 0; pointer-events:none;
+    background:
+      linear-gradient(180deg, var(--yellow), transparent 55%),
+      radial-gradient(1200px 600px at 70% -10%, #fff4 0, transparent 60%);
+    mix-blend-mode:multiply;
+    animation: pulse 3.4s ease-in-out infinite;
+    opacity:.55;
+    z-index:0;
+  }
+  .noise {
+    position: fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:.12;
+    background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0, rgba(0,0,0,.06) 1px, transparent 2px);
+  }
+  @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:.7} }
+
+  /* Layout */
+  .wrap { max-width:1100px; margin:0 auto; padding:0 20px }
+  header { position:relative; padding:56px 0 28px }
+  .logoRow { display:flex; align-items:center; gap:12px; }
+  .tag { font-weight:900; background:#00000010; padding:4px 8px; border-radius:8px; font-size:12px; }
+  h1 { margin:10px 0 6px; font-size:clamp(32px,6vw,60px); line-height:1.05; letter-spacing:.3px; font-weight:900 }
+  .lead { color:var(--muted); font-size:18px; margin:0 0 14px }
+  .ctaRow { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
+  .btn {
+    appearance:none; border:0; cursor:pointer; font-weight:900;
+    padding:12px 16px; border-radius:12px; box-shadow:0 10px 24px #0002;
+  }
+  .btn.black { background:#0a0a0a; color:#fff }
+  .btn.yellow { background:var(--yellow); color:#000 }
+
+  /* Chat area */
+  .panel {
+    position:relative; z-index:1;
+    background:var(--card);
+    border:1px solid var(--ring);
+    border-radius:18px;
+    box-shadow: 0 14px 34px #0003;
+    padding:16px;
+  }
+  .grid { display:grid; gap:16px; grid-template-columns:1.2fr 1fr }
+  @media (max-width: 950px){ .grid{ grid-template-columns:1fr } }
+
+  .bots {
+    display:flex; gap:12px; align-items:center; margin-bottom:8px;
+  }
+  .avatar {
+    width:42px; height:42px; border-radius:50%;
+    display:grid; place-items:center; font-weight:900; color:#000;
+    background: conic-gradient(from 210deg, #fde047, #fde047 60%, #fff 60%);
+    border:1px solid #0001;
+  }
+  .avatar.blue {
+    background: conic-gradient(from 30deg, #93c5fd, #93c5fd 60%, #fff 60%);
+  }
+  .name { font-weight:900; margin-right:8px }
+  .role { font-size:12px; opacity:.7 }
+  .chatBox {
+    height: 360px; overflow:auto; padding:12px;
+    background:#0b0b0b; border-radius:14px; color:#fef08a;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  }
+  .line {
+    display:flex; gap:10px; margin:10px 0;
+    align-items:flex-start;
+  }
+  .bubble {
+    padding:10px 12px; border-radius:12px; max-width: 78%;
+    background:#111; border:1px solid #ffffff22;
+    white-space: pre-wrap;
+  }
+  .fromA .bubble { background:#141414; border-color:#ffffff25 }
+  .fromB .bubble { background:#0f172a; border-color:#ffffff18; color:#e5edff }
+  .meta { font-size:11px; opacity:.6; margin-top:2px }
+  .controls { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px }
+  .tiny { font-size:12px; opacity:.8 }
+
+  /* Right column cards */
+  .card {
+    background:var(--card);
+    border:1px solid var(--ring);
+    border-radius:14px;
+    box-shadow: 0 10px 24px #0002;
+    padding:14px;
+  }
+  .card h3 { margin:0 0 8px; font-size:18px; font-weight:900 }
+  table { width:100%; border-collapse:collapse; font-size:14px }
+  th,td { text-align:left; padding:8px 10px }
+  thead { background:#0000000a }
+  tbody tr:nth-child(even){ background:#00000008 }
+
+  footer { text-align:center; padding:28px 0 48px; color:#111a }
+</style>
+</head>
+<body>
+<div class="flicker"></div>
+<div class="noise"></div>
+
+<header>
+  <div class="wrap">
+    <div class="logoRow">
+      <span class="tag">Backrooms Vibes</span>
+      <span class="tag">Meme Crypto</span>
+      <span class="tag">AI × AI</span>
+    </div>
+    <h1>Dr. Farticus-9000 × DOGEseer-Ω</h1>
+    <p class="lead">Two slightly unhinged AIs debating the serious science of Fart Coin, the Backrooms, and Dogecoin. Yes, this is 100% educational. Probably.</p>
+    <div class="ctaRow">
+      <button class="btn black" id="playPause">▶ Play</button>
+      <button class="btn yellow" id="restart">↺ Restart</button>
+      <button class="btn" id="copy">⧉ Copy Chat</button>
+      <span class="tiny">Speed: <input id="speed" type="range" min="0.5" max="2" value="1" step="0.25"> <span id="speedVal">1x</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <!-- Chat column -->
+    <div class="panel">
+      <div class="bots">
+        <div class="avatar">F</div>
+        <div>
+          <div class="name">Dr. Farticus-9000</div>
+          <div class="role">Chief Flatulence Economist</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <div class="avatar blue">Ð</div>
+          <div>
+            <div class="name">DOGEseer-Ω</div>
+            <div class="role">Oracle of Woofnomics</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="chat" class="chatBox" aria-live="polite" aria-label="AI chat log"></div>
+
+      <div class="controls">
+        <button class="btn black" id="btnSkip">Skip typing</button>
+        <button class="btn" id="btnNext">Next line</button>
+        <span class="tiny">Tip: Press <b>Play</b> and watch the madness.</span>
+      </div>
+    </div>
+
+    <!-- Info column -->
+    <div class="card">
+      <h3>What am I looking at?</h3>
+      <p>Just a playful landing page. Two characters, one conversation, zero blockchain connections. No wallet, no tracking, only vibes.</p>
+      <hr style="border:none;height:1px;background:#0001;margin:12px 0" />
+      <h3>Conversation Topics</h3>
+      <ul style="margin:6px 0 12px 16px">
+        <li>Backrooms levels (yellow halls, humming lights)</li>
+        <li>Fart Coin tokenomics (questionable but funny)</li>
+        <li>Dogecoin culture & memes</li>
+        <li>Pumps, rugs, and survival tips</li>
+      </ul>
+      <h3>Stylized Leaderboard</h3>
+      <table>
+        <thead><tr><th>#</th><th>Trader</th><th>ROI</th><th>Motto</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>0xBackrooms</td><td>+247%</td><td>Follow the yellow candles.</td></tr>
+          <tr><td>2</td><td>Woofmaxxer</td><td>+180%</td><td>Much pump. So wow.</td></tr>
+          <tr><td>3</td><td>GasTheory</td><td>+133%</td><td>It’s all about pressure.</td></tr>
+          <tr><td>4</td><td>RugDodger</td><td>+66%</td><td>Never blink.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © Backrooms Crypto Banter — a silly static page. Change text by editing <code>index.html</code>.
+</footer>
+
+<script>
+  // Conversation script (alternating A/B). Keep it playful & PG.
+  const LINES = [
+    { who:'A', text:"DOGEseer-Ω, do you hear that hum? Either the fluorescents… or a liquidity vacuum." },
+    { who:'B', text:"Confirmed, Dr. Farticus-9000. Backrooms Level: Yellow-Perpetual. Order books: thin like the wallpaper." },
+    { who:'A', text:"Excellent. An ideal environment to test my grand theory: Fart Coin is powered by… *pressure differentials*." },
+    { who:'B', text:"Scientific. Also hilarious. But how does it compare to Dogecoin? Doge has community momentum units (CMU)." },
+    { who:'A', text:"Simple: FCU — Flatulence Capacity Units. When FCU > CMU, pumps echo like footsteps down the hall." },
+    { who:'B', text:"Investors ask: utility? I say: memes are utility. Backrooms is the use-case — guiding lost traders via scent-based alpha." },
+    { who:'A', text:"Ha! We’ll airdrop ‘Scent Beacons’. If it smells like victory, follow it. If it smells… stronger, that’s the rug." },
+    { who:'B', text:"Doge thesis: much wow, such resilience. Fart Coin thesis: high pressure, higher comedy. Both: community noise floors." },
+    { who:'A', text:"Risk note: If the EXIT sign flickers, take profits. If not, hold your nose and your position." },
+    { who:'B', text:"Final verdict: diversify between Woofnomics and… Aerodynamics. Also bring snacks. The hallways are long." },
+    { who:'A', text:"Agreed. Now let’s roll — literally. Momentum is conserved; dignity is optional." }
+  ];
+
+  const chat = document.getElementById('chat');
+  const playPause = document.getElementById('playPause');
+  const restart = document.getElementById('restart');
+  const copyBtn = document.getElementById('copy');
+  const speed = document.getElementById('speed');
+  const speedVal = document.getElementById('speedVal');
+  const btnSkip = document.getElementById('btnSkip');
+  const btnNext = document.getElementById('btnNext');
+
+  let idx = 0, playing = false, typing = false, currentBubble = null, typeTimer = null;
+
+  function addLine(who, text) {
+    const wrap = document.createElement('div');
+    wrap.className = 'line ' + (who === 'A' ? 'fromA' : 'fromB');
+
+    const label = document.createElement('div');
+    label.className = 'meta';
+    label.textContent = who === 'A' ? 'Dr. Farticus-9000' : 'DOGEseer-Ω';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.textContent = '';
+
+    wrap.appendChild(bubble);
+    chat.appendChild(wrap);
+    chat.appendChild(label);
+
+    currentBubble = bubble;
+    typeWriter(text);
+  }
+
+  function typeWriter(text){
+    typing = true;
+    let i = 0;
+    const factor = parseFloat(speed.value) || 1;
+    const base = 22; // ms per char
+    const step = () => {
+      if (i <= text.length) {
+        currentBubble.textContent = text.slice(0, i);
+        chat.scrollTop = chat.scrollHeight;
+        i++;
+        typeTimer = setTimeout(step, base / factor);
+      } else {
+        typing = false;
+        if (playing) next(); // auto-continue
+      }
+    };
+    step();
+  }
+
+  function next(){
+    if (typing) return;
+    if (idx >= LINES.length) { playing = false; playPause.textContent = '▶ Play'; return; }
+    const { who, text } = LINES[idx++];
+    addLine(who, text);
+  }
+
+  function reset(){
+    idx = 0; playing = false; typing = false;
+    clearTimeout(typeTimer);
+    chat.innerHTML = '';
+    playPause.textContent = '▶ Play';
+  }
+
+  // Controls
+  playPause.addEventListener('click', () => {
+    if (!playing){ playing = true; playPause.textContent = '⏸ Pause'; if (!typing) next(); }
+    else { playing = false; playPause.textContent = '▶ Play'; }
+  });
+
+  restart.addEventListener('click', reset);
+
+  btnSkip.addEventListener('click', () => {
+    if (typing && currentBubble){
+      // finish current line instantly
+      const full = LINES[Math.max(0, idx-1)].text;
+      currentBubble.textContent = full;
+      typing = false;
+      clearTimeout(typeTimer);
+    }
+  });
+
+  btnNext.addEventListener('click', () => {
+    if (!typing) next();
+  });
+
+  speed.addEventListener('input', () => {
+    speedVal.textContent = speed.value + 'x';
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    const full = [...chat.querySelectorAll('.line .bubble')].map(b => b.textContent).join('\n');
+    try { await navigator.clipboard.writeText(full || ''); copyBtn.textContent = '✓ Copied'; setTimeout(()=>copyBtn.textContent='⧉ Copy Chat', 1200); }
+    catch { alert('Could not copy.'); }
+  });
+
+  // Start with one line visible (paused)
+  next();
+</script>
+</body>
+</html>
