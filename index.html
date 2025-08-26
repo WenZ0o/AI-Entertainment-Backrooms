@@ -4,74 +4,38 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Backrooms Banter — Dr. Farticus-9000 × DOGEseer-Ω</title>
-<meta name="description" content="Two unhinged AIs chat about Fart Coin, Dogecoin and survival in the darker Backrooms. Includes playful sound effects." />
+<meta name="description" content="Two unhinged AIs chat about Fart Coin, Dogecoin and survival in the darker Backrooms. Includes funny fart sounds." />
 <style>
   :root {
-    --bg: #0b0b0b;
-    --panel: #111;
-    --text: #eee;
-    --accent: #22d3ee; /* cyan highlight */
-    --bubbleA: #1f2937;
-    --bubbleB: #0f172a;
-    --muted: #aaa;
+    --bg:#0b0b0b; --panel:#111; --text:#eee;
+    --accent:#22d3ee; --bubbleA:#1f2937; --bubbleB:#0f172a; --muted:#aaa;
   }
-  * { box-sizing:border-box }
-  html,body { height:100% }
-  body {
-    margin:0;
-    font: 16px/1.6 system-ui, Segoe UI, Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x:hidden;
-  }
-
-  /* Backrooms dark vibes */
-  .flicker {
-    position:fixed; inset:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse at 50% 0%, #22d3ee18 0%, transparent 60%),
-      radial-gradient(ellipse at 80% -10%, #22d3ee10 0%, transparent 55%);
-    animation:flicker 4s infinite;
-    mix-blend-mode:screen; opacity:.6;
-    z-index:0;
-  }
-  .noise {
-    position:fixed; inset:0; pointer-events:none; z-index:0;
-    background-image:repeating-linear-gradient(0deg, #ffffff14 0, #ffffff14 1px, transparent 2px);
-    opacity:.06;
-  }
-  @keyframes flicker { 0%,100%{opacity:.4} 50%{opacity:.75} }
-
-  /* Layout */
-  header { padding:54px 20px 18px; text-align:center; position:relative; z-index:1 }
-  h1 { font-size:clamp(30px,6vw,60px); margin:0 0 8px; color:var(--accent); font-weight:900; letter-spacing:.2px }
-  .lead { color:var(--muted); font-size:18px; margin:0 auto; max-width:680px }
-
-  .wrap { max-width:980px; margin:0 auto; padding:0 20px }
-  .chatBox {
-    position:relative; z-index:1;
-    margin:34px auto 0; padding:18px;
-    background:var(--panel); border-radius:16px; box-shadow:0 10px 30px #0009;
-    height:480px; overflow-y:auto; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  }
-  .line { display:flex; gap:10px; margin:12px 0; align-items:flex-start }
-  .bubble { padding:10px 14px; border-radius:12px; max-width:78%; white-space: pre-wrap }
-  .fromA .bubble { background:var(--bubbleA) }
-  .fromB .bubble { background:var(--bubbleB); color:#cbd5e1 }
-  .meta { font-size:12px; opacity:.6; margin:2px 0 0 4px }
-  .controls {
-    margin:18px auto 0; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
-  }
-  .btn {
-    background:var(--accent); color:#001016; border:0; border-radius:10px;
-    padding:10px 14px; font-weight:900; cursor:pointer; box-shadow:0 8px 20px #0006;
-  }
-  .btn.secondary { background:#222; color:#ddd }
-  .btn:hover { filter:brightness(1.05) }
-  .tiny { font-size:12px; color:#9aa; display:flex; gap:6px; align-items:center }
-  input[type="range"] { accent-color: var(--accent); }
-
-  footer { text-align:center; padding:28px 0 44px; color:#7a7a7a }
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.6 system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg);color:var(--text);overflow-x:hidden;}
+  .flicker{position:fixed;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 0%,#22d3ee18 0%,transparent 60%);
+    animation:flicker 4s infinite;mix-blend-mode:screen;opacity:.6;}
+  .noise{position:fixed;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(0deg,#fff1 0,#fff1 1px,transparent 2px);
+    opacity:.06;}
+  @keyframes flicker{0%,100%{opacity:.4}50%{opacity:.75}}
+  header{text-align:center;padding:50px 20px 18px}
+  h1{font-size:clamp(30px,6vw,60px);margin:0 0 8px;color:var(--accent);font-weight:900}
+  .lead{color:var(--muted);font-size:18px;margin:0 auto;max-width:650px}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  .chatBox{margin:34px auto 0;padding:18px;background:var(--panel);border-radius:16px;
+    box-shadow:0 10px 30px #0009;height:480px;overflow-y:auto;font-family:monospace}
+  .line{display:flex;gap:10px;margin:12px 0}
+  .bubble{padding:10px 14px;border-radius:12px;max-width:78%;white-space:pre-wrap}
+  .fromA .bubble{background:var(--bubbleA)}
+  .fromB .bubble{background:var(--bubbleB);color:#cbd5e1}
+  .meta{font-size:12px;opacity:.6;margin-left:6px}
+  .controls{margin:18px auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .btn{background:var(--accent);color:#001016;border:0;border-radius:10px;padding:10px 14px;
+    font-weight:900;cursor:pointer;box-shadow:0 8px 20px #0006;}
+  .btn.secondary{background:#222;color:#ddd}
+  footer{text-align:center;padding:28px;color:#777}
 </style>
 </head>
 <body>
@@ -79,242 +43,128 @@
 
 <header>
   <h1>Dr. Farticus-9000 × DOGEseer-Ω</h1>
-  <p class="lead">Two bizarre AIs stuck in the darker Backrooms, arguing about Fart Coin, Dogecoin, and highly questionable survival strategies — with spooky buzz, barks & flushes.</p>
+  <p class="lead">Two bizarre AIs stuck in the darker Backrooms, arguing about Fart Coin, Dogecoin, and questionable survival strategies — now with random fart noises.</p>
 </header>
 
 <main class="wrap">
-  <div id="chat" class="chatBox" aria-live="polite" aria-label="AI chat log"></div>
-
+  <div id="chat" class="chatBox"></div>
   <div class="controls">
     <button class="btn" id="playPause">▶ Play</button>
     <button class="btn secondary" id="restart">↺ Restart</button>
-    <button class="btn secondary" id="skip">⏩ Skip Line</button>
-    <span class="tiny">Speed:
-      <input id="speed" type="range" min="0.5" max="2" value="1" step="0.25">
-      <span id="speedVal">1x</span>
-    </span>
+    <button class="btn secondary" id="skip">⏩ Skip</button>
     <button class="btn secondary" id="mute">🔈 Mute</button>
   </div>
 </main>
-
-<footer>
-  © Backrooms Banter — edit <code>index.html</code> to change names, jokes, or colors. No external files needed.
-</footer>
+<footer>© Backrooms Banter — edit <code>index.html</code> to change jokes or SFX.</footer>
 
 <script>
-/* -----------------------------------------
-   DIALOG (30+ lines). Add or edit freely.
------------------------------------------ */
-const LINES = [
-  { who:'A', text:"DOGEseer-Ω, did you fart or is that just Fart Coin inflating?" },
-  { who:'B', text:"Confirmed: both. The blockchain has gas fees… and gas leaks." },
-  { who:'A', text:"This corridor smells like a pump. Or maybe onions." },
-  { who:'B', text:"Dogecoin community calls it 'natural adoption'. My nose calls it danger." },
-  { who:'A', text:"Investors ask: utility? Answer: comedic relief. Also doubles as a room freshener." },
-  { who:'B', text:"Survival tip: when you hear buzzing lights AND memes, follow the memes." },
-  { who:'A', text:"Backrooms Level 42: liquidity pool disguised as a vending machine." },
-  { who:'B', text:"Insert snack, receive rugpull. Classic trap." },
-  { who:'A', text:"If we roll fast enough, maybe we moon… or just hit the next wall." },
-  { who:'B', text:"Remember: candles go up, noses go down. Balance is key." },
-  { who:'A', text:"Final verdict: Hold your breath, hold your bags." },
-  { who:'B', text:"And always bring toilet paper. For charts… or for survival." },
-
-  // extra chaos
-  { who:'A', text:"These fluorescent lights remind me of Dogecoin memes: endless, buzzing, slightly cursed." },
-  { who:'B', text:"Careful, Dr. Farticus-9000, the lights get brighter every time Elon tweets." },
-  { who:'A', text:"Interesting. Then why does my portfolio get dimmer?" },
-  { who:'B', text:"Because you invested in $FART when you should have shorted Taco Tuesday." },
-  { who:'A', text:"At least Fart Coin has strong fundamentals: beans, broccoli, and burritos." },
-  { who:'B', text:"Meanwhile Dogecoin runs on pure bark energy — unlimited woofs per second." },
-  { who:'A', text:"Look! An EXIT sign! Wait… no, it's just a green candle." },
-  { who:'B', text:"Every green candle in the Backrooms is just a hallway trap. Liquidity mirage." },
-  { who:'A', text:"I propose merging our chains: FartDogeChain. Transactions confirmed by smell and howl." },
-  { who:'B', text:"Consensus mechanism: Proof of Odor. Validators need… strong stomachs." },
-  { who:'A', text:"Liquidity providers: Taco Bell franchise owners." },
-  { who:'B', text:"Governance token: $GAS. Stakers get complimentary air fresheners." },
-  { who:'A', text:"This place echoes every pump. Is that the market… or my stomach?" },
-  { who:'B', text:"Hard to say. Both sound like impending liquidation." },
-  { who:'A', text:"If we get lost, just follow the trail of memes. They always lead somewhere dumb but fun." },
-  { who:'B', text:"Correct. Level 69 is basically one giant Doge mural with ambient barking." },
-  { who:'A', text:"Level 420: permanently hazy, full of snack machines and chill traders." },
-  { who:'B', text:"Warning: every vending machine here only accepts Fart Coin. Insert burrito, receive chart." },
-  { who:'A', text:"Note to self: never trust a liquidity pool shaped like a toilet." },
-  { who:'B', text:"Agreed. That’s a guaranteed rug flush." },
-  { who:'A', text:"Endgame strategy: moon, pump, roll, repeat." },
-  { who:'B', text:"Don’t forget to laugh — humor is the only inflation hedge here." }
+/* ---------------- Chat lines ---------------- */
+const LINES=[
+ {who:'A',text:"DOGEseer-Ω, did you fart or is that just Fart Coin inflating?"},
+ {who:'B',text:"Confirmed: both. The blockchain has gas fees… and gas leaks."},
+ {who:'A',text:"This corridor smells like a pump. Or maybe onions."},
+ {who:'B',text:"Dogecoin community calls it 'natural adoption'. My nose calls it danger."},
+ {who:'A',text:"At least Fart Coin has strong fundamentals: beans, broccoli, and burritos."},
+ {who:'B',text:"Meanwhile Dogecoin runs on pure bark energy — unlimited woofs per second."},
+ {who:'A',text:"Backrooms Level 42: liquidity pool disguised as a vending machine."},
+ {who:'B',text:"Insert snack, receive rugpull. Classic trap."},
+ {who:'A',text:"Note to self: never trust a liquidity pool shaped like a toilet."},
+ {who:'B',text:"Agreed. That’s a guaranteed rug flush."},
+ {who:'A',text:"Endgame strategy: moon, pump, roll, repeat."},
+ {who:'B',text:"Don’t forget to laugh — humor is the only inflation hedge here."}
 ];
 
-/* -----------------------------------------
-   SIMPLE CHAT PLAYER WITH TYPEWRITER
------------------------------------------ */
-const chat = document.getElementById('chat');
-const playPause = document.getElementById('playPause');
-const restartBtn = document.getElementById('restart');
-const skipBtn = document.getElementById('skip');
-const speed = document.getElementById('speed');
-const speedVal = document.getElementById('speedVal');
-const muteBtn = document.getElementById('mute');
+/* ---------------- WebAudio SFX ---------------- */
+let audio,muted=false;
+function initAudio(){if(audio)return;
+ const ctx=new (window.AudioContext||window.webkitAudioContext)();
+ audio={
+  ctx,
+  noise(dur=0.25,g=0.04,band=150,width=60){
+    const bSize=ctx.sampleRate*dur;
+    const buf=ctx.createBuffer(1,bSize,ctx.sampleRate);
+    const data=buf.getChannelData(0);
+    for(let i=0;i<bSize;i++)data[i]=(Math.random()*2-1)*0.6;
+    const src=ctx.createBufferSource();src.buffer=buf;
+    const gain=ctx.createGain();gain.gain.value=g;
+    const filter=ctx.createBiquadFilter();
+    filter.type="bandpass";filter.frequency.value=band;filter.Q.value=width/10;
+    src.connect(filter).connect(gain).connect(ctx.destination);
+    src.start();
+  },
+  fart(){
+    if(muted)return;
+    // random fart = noise + pitch slide
+    const baseFreq=80+Math.random()*60;   // 80–140 Hz
+    const dur=0.3+Math.random()*0.3;      // 0.3–0.6s
+    const o=ctx.createOscillator();const g=ctx.createGain();
+    o.type='sawtooth';o.frequency.setValueAtTime(baseFreq,ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(baseFreq/2,ctx.currentTime+dur);
+    g.gain.setValueAtTime(0.15,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);
+    o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur);
+    // add breathy noise tail
+    setTimeout(()=>this.noise(0.2+Math.random()*0.2,0.05,100+Math.random()*80,40),50);
+  },
+  woof(){
+    if(muted)return;
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type='square';o.frequency.value=200;g.gain.value=0.08;
+    o.connect(g).connect(ctx.destination);
+    o.start();o.stop(ctx.currentTime+0.12);
+  },
+  buzz(){if(muted)return;this.noise(0.2,0.03);},
+  flush(){if(muted)return;this.noise(0.3,0.04);}
+ };
+}
 
-let idx = 0, typing = false, playing = false, timer = null, bubble = null;
-let audio, muted = false;
+/* ---------------- Chat rendering ---------------- */
+const chat=document.getElementById('chat');
+let idx=0,typing=false,playing=false,timer=null,bubble=null;
 
-/* -----------------------------------------
-   WEB AUDIO: tiny synth SFX (no files)
------------------------------------------ */
-function initAudio() {
-  if (audio) return;
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  audio = {
-    ctx,
-    // quick helpers
-    tone(freq=440, dur=0.15, type='sine', gain=0.05){
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = type; o.frequency.value = freq;
-      g.gain.value = gain;
-      o.connect(g).connect(ctx.destination);
-      o.start();
-      o.stop(ctx.currentTime + dur);
-    },
-    noise(dur=0.25, gain=0.04){
-      const bufferSize = 2 * ctx.sampleRate * dur;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i=0;i<bufferSize;i++) data[i] = (Math.random()*2-1) * 0.6;
-      const src = ctx.createBufferSource();
-      src.buffer = buffer;
-      const g = ctx.createGain(); g.gain.value = gain;
-      const biq = ctx.createBiquadFilter(); biq.type='bandpass'; biq.frequency.value=90; biq.Q.value=8;
-      src.connect(biq).connect(g).connect(ctx.destination);
-      src.start();
-    },
-    // buzzing lights: soft loop burst
-    buzz(){
-      if (muted) return;
-      this.noise(0.35, 0.03);
-      this.tone(120, 0.08, 'sawtooth', 0.02);
-    },
-    // doge "woof": two short tones + noise puff
-    woof(){
-      if (muted) return;
-      this.tone(220, 0.06, 'square', 0.06);
-      setTimeout(()=>this.tone(180, 0.08, 'square', 0.06), 70);
-      setTimeout(()=>this.noise(0.05, 0.02), 60);
-    },
-    // cartoony "flush": descending tone + noise tail
-    flush(){
-      if (muted) return;
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type='sawtooth'; o.frequency.setValueAtTime(500, ctx.currentTime);
-      o.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.3);
-      g.gain.setValueAtTime(0.05, ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
-      o.connect(g).connect(ctx.destination);
-      o.start(); o.stop(ctx.currentTime + 0.32);
-      setTimeout(()=>this.noise(0.18, 0.02), 120);
+function addLine(who,text){
+ const wrap=document.createElement('div');
+ wrap.className='line '+(who==='A'?'fromA':'fromB');
+ bubble=document.createElement('div');
+ bubble.className='bubble';bubble.textContent='';
+ wrap.appendChild(bubble);chat.appendChild(wrap);
+ const meta=document.createElement('div');meta.className='meta';
+ meta.textContent=who==='A'?'Dr. Farticus-9000':'DOGEseer-Ω';
+ chat.appendChild(meta);
+ typeWriter(text,who);
+}
+
+function typeWriter(text,who){
+ typing=true;let i=0;
+ function step(){
+  if(i<=text.length){
+    bubble.textContent=text.slice(0,i);chat.scrollTop=chat.scrollHeight;i++;
+    timer=setTimeout(step,25);
+  }else{typing=false;
+    if(!muted && audio){
+      if(who==='A')audio.fart();
+      else if(text.toLowerCase().includes('doge'))audio.woof();
+      else if(text.toLowerCase().includes('toilet'))audio.flush();
+      else audio.buzz();
     }
-  };
+    if(playing)nextLine();
+  }}
+ step();
 }
+function nextLine(){if(typing)return;
+ if(idx>=LINES.length){playing=false;pp.textContent='▶ Play';return;}
+ const {who,text}=LINES[idx++];addLine(who,text);}
+function resetChat(){idx=0;chat.innerHTML='';playing=false;pp.textContent='▶ Play';}
 
-function playSfxForLine(lineText){
-  if (!audio) return;
-  const t = lineText.toLowerCase();
-  if (t.includes('buzz') || t.includes('fluoresc') || t.includes('humming')) audio.buzz();
-  if (t.includes('doge') || t.includes('woof')) audio.woof();
-  if (t.includes('toilet') || t.includes('flush') || t.includes('rug')) audio.flush();
-  // occasional ambient buzz
-  if (Math.random() < 0.12) audio.buzz();
-}
+/* ---------------- Controls ---------------- */
+const pp=document.getElementById('playPause');
+pp.onclick=async()=>{if(!audio)initAudio();if(audio&&audio.ctx.state==='suspended')await audio.ctx.resume();
+ if(!playing){playing=true;pp.textContent='⏸ Pause';if(!typing)nextLine();}
+ else{playing=false;pp.textContent='▶ Play';}};
+document.getElementById('restart').onclick=resetChat;
+document.getElementById('skip').onclick=()=>{if(typing&&bubble){bubble.textContent=LINES[idx-1].text;typing=false;clearTimeout(timer);}};
+document.getElementById('mute').onclick=()=>{muted=!muted;document.getElementById('mute').textContent=muted?'🔇 Unmute':'🔈 Mute';};
 
-/* -----------------------------------------
-   Chat rendering
------------------------------------------ */
-function addLine(who, text){
-  const wrap = document.createElement('div');
-  wrap.className = 'line ' + (who === 'A' ? 'fromA' : 'fromB');
-  bubble = document.createElement('div');
-  bubble.className = 'bubble'; bubble.textContent = '';
-  wrap.appendChild(bubble);
-  chat.appendChild(wrap);
-  const meta = document.createElement('div');
-  meta.className = 'meta';
-  meta.textContent = who === 'A' ? 'Dr. Farticus-9000' : 'DOGEseer-Ω';
-  chat.appendChild(meta);
-
-  chat.scrollTop = chat.scrollHeight;
-  typeWriter(text);
-  playSfxForLine(text);
-}
-
-function typeWriter(text){
-  typing = true; let i = 0;
-  const base = 22; // ms per char
-  const factor = parseFloat(speed.value) || 1;
-  function step() {
-    if (i <= text.length) {
-      bubble.textContent = text.slice(0, i);
-      chat.scrollTop = chat.scrollHeight;
-      i++;
-      timer = setTimeout(step, base / factor);
-    } else {
-      typing = false;
-      if (playing) nextLine();
-    }
-  }
-  step();
-}
-
-function nextLine(){
-  if (typing) return;
-  if (idx >= LINES.length) {
-    playing = false;
-    playPause.textContent = '▶ Play';
-    return;
-  }
-  const { who, text } = LINES[idx++];
-  addLine(who, text);
-}
-
-function resetChat(){
-  idx = 0; typing = false; playing = false;
-  clearTimeout(timer);
-  chat.innerHTML = '';
-  playPause.textContent = '▶ Play';
-}
-
-/* -----------------------------------------
-   Controls
------------------------------------------ */
-playPause.addEventListener('click', async () => {
-  if (!audio) initAudio();
-  if (audio && audio.ctx.state === 'suspended') await audio.ctx.resume();
-  if (!playing) {
-    playing = true; playPause.textContent = '⏸ Pause';
-    if (!typing) nextLine();
-  } else {
-    playing = false; playPause.textContent = '▶ Play';
-  }
-});
-restartBtn.addEventListener('click', resetChat);
-skipBtn.addEventListener('click', () => {
-  if (typing && bubble) {
-    const full = LINES[Math.max(0, idx-1)].text;
-    bubble.textContent = full;
-    typing = false;
-    clearTimeout(timer);
-  }
-});
-speed.addEventListener('input', () => { speedVal.textContent = speed.value + 'x'; });
-
-muteBtn.addEventListener('click', async () => {
-  if (!audio) initAudio();
-  muted = !muted;
-  muteBtn.textContent = muted ? '🔇 Unmute' : '🔈 Mute';
-  if (audio && audio.ctx.state === 'suspended') await audio.ctx.resume();
-});
-
-/* Start with first line on screen (paused) */
 nextLine();
 </script>
 </body>
